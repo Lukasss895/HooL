@@ -126,7 +126,7 @@
         .btn-green:hover {
             background: linear-gradient(to bottom, #4a862b, #2b5517);
         }
-        /* Detail hry */
+        /* Game Detail */
         .game-detail-header {
             display: flex;
             justify-content: space-between;
@@ -160,7 +160,7 @@
             color: #666;
             font-size: 11px;
         }
-        /* Auth okno */
+        /* Auth window */
         .auth-container {
             background: #222;
             border: 1px solid #3a3a3a;
@@ -238,7 +238,7 @@
 
         <div class="content">
             
-            <!-- OKNO 1: STORE -->
+            <!-- PANE 1: STORE -->
             <div id="pane-store" class="window-pane active">
                 <div class="section-title">Featured Store Projects</div>
                 <div class="games-grid">
@@ -255,7 +255,7 @@
                 </div>
             </div>
 
-            <!-- OKNO 1.1: DETAIL HRY -->
+            <!-- PANE 1.1: GAME DETAIL -->
             <div id="pane-game-detail" class="window-pane">
                 <button class="btn" style="margin-bottom: 15px; font-size: 11px; padding: 4px 10px;" onclick="switchTab('store')">&lt; Back to Store</button>
                 
@@ -281,7 +281,7 @@
                 </div>
             </div>
 
-            <!-- OKNO 2: LIBRARY -->
+            <!-- PANE 2: LIBRARY -->
             <div id="pane-library" class="window-pane">
                 <div class="section-title">Your Game Library</div>
                 <div id="library-content" style="text-align: center; color: #777; padding: 30px;">
@@ -289,7 +289,7 @@
                 </div>
             </div>
 
-            <!-- OKNO 3: ACCOUNT -->
+            <!-- PANE 3: ACCOUNT -->
             <div id="pane-auth" class="window-pane">
                 <div id="auth-forms" class="auth-container">
                     <div class="auth-box">
@@ -328,7 +328,7 @@
                 </div>
             </div>
 
-            <!-- OKNO 4: SUPPORT -->
+            <!-- PANE 4: SUPPORT -->
             <div id="pane-support" class="window-pane">
                 <div class="section-title">HooL Support Center</div>
                 
@@ -353,7 +353,7 @@
 
             </div>
 
-            <!-- OKNO 5: DOWNLOAD CLIENT -->
+            <!-- PANE 5: DOWNLOAD CLIENT -->
             <div id="pane-install" class="window-pane">
                 <div class="section-title">Download HooL Client</div>
                 <div style="text-align: center; padding: 20px;">
@@ -478,7 +478,7 @@
             libContainer.innerHTML = html;
         }
 
-        // Odoslanie support ticketu cez Formspree na pozadí bez presmerovania stránky
+        // Support ticket submission with professional corporate template in English
         async function submitSupportTicket() {
             let user = document.getElementById('support-user').value.trim();
             let email = document.getElementById('support-email').value.trim();
@@ -502,9 +502,16 @@
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
+                        _subject: "[HOOL SUPPORT TICKET] Request from: " + user,
                         username: user,
                         email: email,
-                        message: text
+                        message: "========================================\n" +
+                                 "   HOOLIGANS CORPORATION - SUPPORT DESK\n" +
+                                 "========================================\n" +
+                                 "Username: " + user + "\n" +
+                                 "User Email: " + email + "\n\n" +
+                                 "Support Request / Issue Description:\n" + text + "\n" +
+                                 "========================================"
                     })
                 });
 
