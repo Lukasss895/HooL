@@ -120,6 +120,47 @@
         .btn:hover {
             background: linear-gradient(to bottom, #6a6a6a, #3d3d3d);
         }
+        .btn-green {
+            background: linear-gradient(to bottom, #3b6e22, #224412);
+        }
+        .btn-green:hover {
+            background: linear-gradient(to bottom, #4a862b, #2b5517);
+        }
+        /* Detail hry */
+        .game-detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .media-container {
+            background: #181818;
+            border: 1px solid #333;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #777;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+        .screenshots {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .screenshot-thumb {
+            background: #222;
+            border: 1px solid #444;
+            flex: 1;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #666;
+            font-size: 11px;
+        }
+        /* Auth okno */
         .auth-container {
             background: #222;
             border: 1px solid #3a3a3a;
@@ -189,7 +230,7 @@
                 <a onclick="switchTab('store')" id="nav-store" class="active">Store</a>
                 <a onclick="switchTab('library')" id="nav-library">Library</a>
                 <a onclick="switchTab('auth')" id="nav-auth">Account</a>
-                <a onclick="switchTab('install')" id="nav-install" class="install-btn">setup.exe</a>
+                <a onclick="switchTab('install')" id="nav-install" class="install-btn">Download Client</a>
             </nav>
         </header>
 
@@ -202,13 +243,39 @@
                     <div class="game-card">
                         <h3>SO:Counter</h3>
                         <p>Classic tactical action remastered under Hooligans Corporation.</p>
-                        <a href="#" class="btn" style="padding: 5px 12px; font-size: 11px;">View Project</a>
+                        <button class="btn" onclick="openGame('socounter')">View Project</button>
                     </div>
                     <div class="game-card">
                         <h3>GO:SPEED MOST WANTED</h3>
                         <p>High-speed retro arcade racing experience.</p>
-                        <a href="#" class="btn" style="padding: 5px 12px; font-size: 11px;">View Project</a>
+                        <button class="btn" onclick="openGame('gospeed')">View Project</button>
                     </div>
+                </div>
+            </div>
+
+            <!-- OKNO 1.1: DETAIL HRY -->
+            <div id="pane-game-detail" class="window-pane">
+                <button class="btn" style="margin-bottom: 15px; font-size: 11px; padding: 4px 10px;" onclick="switchTab('store')">&lt; Back to Store</button>
+                
+                <div class="game-detail-header">
+                    <div>
+                        <h2 id="detail-title" style="color: #fff; margin: 0 0 5px 0; font-size: 18px;">Game Title</h2>
+                        <span id="detail-desc" style="font-size: 12px; color: #999;">Game description goes here.</span>
+                    </div>
+                    <div>
+                        <button id="detail-add-btn" class="btn btn-green" onclick="addCurrentGameToLibrary()">Add to Library</button>
+                    </div>
+                </div>
+
+                <div class="media-container">
+                    [ GAME TRAILER / PREVIEW VIDEO ]
+                </div>
+
+                <div class="section-title">Screenshots</div>
+                <div class="screenshots">
+                    <div class="screenshot-thumb">[ Screenshot 1 ]</div>
+                    <div class="screenshot-thumb">[ Screenshot 2 ]</div>
+                    <div class="screenshot-thumb">[ Screenshot 3 ]</div>
                 </div>
             </div>
 
@@ -220,9 +287,8 @@
                 </div>
             </div>
 
-            <!-- OKNO 3: ACCOUNT (Login / Register) -->
+            <!-- OKNO 3: ACCOUNT -->
             <div id="pane-auth" class="window-pane">
-                <!-- Ak nie je prihlásený, ukážeme formuláre -->
                 <div id="auth-forms" class="auth-container">
                     <div class="auth-box">
                         <h3>Sign In</h3>
@@ -248,12 +314,11 @@
                             <label>Password</label>
                             <input type="password" id="reg-pass" placeholder="New password">
                         </div>
-                        <button class="btn" style="width: 100%; margin-top: 5px; padding: 7px; background: linear-gradient(to bottom, #3b6e22, #224412);" onclick="handleRegister()">Create Account</button>
+                        <button class="btn btn-green" style="width: 100%; margin-top: 5px; padding: 7px;" onclick="handleRegister()">Create Account</button>
                         <div id="reg-msg" class="msg"></div>
                     </div>
                 </div>
 
-                <!-- Ak je prihlásený, ukážeme profil -->
                 <div id="auth-profile" style="display: none; text-align: center; padding: 20px;">
                     <h3 style="color: #fff;">Welcome back, <span id="profile-username" style="color: #60abf8;"></span>!</h3>
                     <p style="font-size: 12px; color: #aaa;">You are successfully logged into Hooligans Corporation network.</p>
@@ -261,12 +326,12 @@
                 </div>
             </div>
 
-            <!-- OKNO 4: INSTALL (setup.exe) -->
+            <!-- OKNO 4: DOWNLOAD CLIENT -->
             <div id="pane-install" class="window-pane">
-                <div class="section-title">Download Client Setup</div>
+                <div class="section-title">Download HooL Client</div>
                 <div style="text-align: center; padding: 20px;">
-                    <p style="font-size: 13px; color: #ccc; margin-bottom: 20px;">Download the official Hooligans Corporation installer to get HooL on your desktop.</p>
-                    <a href="#" class="btn" style="padding: 12px 30px; font-size: 14px; background: linear-gradient(to bottom, #3b6e22, #224412);">Download setup.exe (v1.0)</a>
+                    <p style="font-size: 13px; color: #ccc; margin-bottom: 20px;">Get the official desktop client to manage all Hooligans Corporation projects directly from your PC.</p>
+                    <a href="#" class="btn btn-green" style="padding: 12px 30px; font-size: 14px;">Download HooL (v1.0)</a>
                 </div>
             </div>
 
@@ -278,6 +343,19 @@
     </div>
 
     <script>
+        let currentGameID = '';
+
+        const gamesData = {
+            'socounter': {
+                title: 'SO:Counter',
+                desc: 'Classic tactical action remastered under Hooligans Corporation.'
+            },
+            'gospeed': {
+                title: 'GO:SPEED MOST WANTED',
+                desc: 'High-speed retro arcade racing experience.'
+            }
+        };
+
         function switchTab(tabName) {
             document.querySelectorAll('.window-pane').forEach(pane => {
                 pane.classList.remove('active');
@@ -288,29 +366,100 @@
             
             document.getElementById('pane-' + tabName).classList.add('active');
             let clickedNav = document.getElementById('nav-' + tabName);
-            if(!clickedNav.classList.contains('install-btn')) {
+            if(clickedNav && !clickedNav.classList.contains('install-btn')) {
                 clickedNav.classList.add('active');
+            }
+            if(tabName === 'library') {
+                updateLibraryView();
             }
         }
 
-        // --- AUTH LOGIKA ---
+        function openGame(gameKey) {
+            currentGameID = gameKey;
+            let game = gamesData[gameKey];
+            document.getElementById('detail-title').innerText = game.title;
+            document.getElementById('detail-desc').innerText = game.desc;
+
+            let currentUser = localStorage.getItem('hool_current_user');
+            let btn = document.getElementById('detail-add-btn');
+            
+            if (currentUser) {
+                let userGames = JSON.parse(localStorage.getItem('hool_games_' + currentUser) || '[]');
+                if (userGames.includes(gameKey)) {
+                    btn.innerText = 'In Library ✓';
+                    btn.disabled = true;
+                    btn.style.opacity = '0.6';
+                } else {
+                    btn.innerText = 'Add to Library';
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
+                }
+            } else {
+                btn.innerText = 'Log in to Add';
+                btn.disabled = false;
+            }
+
+            document.querySelectorAll('.window-pane').forEach(pane => pane.classList.remove('active'));
+            document.getElementById('pane-game-detail').classList.add('active');
+        }
+
+        function addCurrentGameToLibrary() {
+            let currentUser = localStorage.getItem('hool_current_user');
+            if (!currentUser) {
+                alert('You must be logged in to add games to your library!');
+                switchTab('auth');
+                return;
+            }
+
+            let userGames = JSON.parse(localStorage.getItem('hool_games_' + currentUser) || '[]');
+            if (!userGames.includes(currentGameID)) {
+                userGames.push(currentGameID);
+                localStorage.setItem('hool_games_' + currentUser, JSON.stringify(userGames));
+            }
+
+            let btn = document.getElementById('detail-add-btn');
+            btn.innerText = 'In Library ✓';
+            btn.disabled = true;
+            btn.style.opacity = '0.6';
+            alert('Game successfully added to your library!');
+        }
+
+        function updateLibraryView() {
+            let currentUser = localStorage.getItem('hool_current_user');
+            let libContainer = document.getElementById('library-content');
+
+            if (!currentUser) {
+                libContainer.innerHTML = `Log in to view your owned HooL Corporation projects and installed games.`;
+                return;
+            }
+
+            let userGames = JSON.parse(localStorage.getItem('hool_games_' + currentUser) || '[]');
+            if (userGames.length === 0) {
+                libContainer.innerHTML = `<p style="color: #aaa; font-size: 13px;">Your library is empty. Visit the <a style="color: #60abf8; cursor: pointer;" onclick="switchTab('store')">Store</a> to add games!</p>`;
+                return;
+            }
+
+            let html = `<p style="color: #fff; font-size: 13px; margin-bottom: 15px;">Owned projects for <strong>${currentUser}</strong>:</p><div style="display: flex; flex-direction: column; gap: 10px; text-align: left;">`;
+            userGames.forEach(key => {
+                let g = gamesData[key];
+                html += `<div style="background: #222; border: 1px solid #383838; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center;">
+                    <div><strong style="color:#fff; font-size:13px;">${g.title}</strong><br><span style="font-size:11px; color:#888;">Ready to play</span></div>
+                    <button class="btn btn-green" style="padding: 5px 12px; font-size: 11px;">Play</button>
+                </div>`;
+            });
+            html += `</div>`;
+            libContainer.innerHTML = html;
+        }
+
         function checkAuth() {
             let currentUser = localStorage.getItem('hool_current_user');
             if (currentUser) {
                 document.getElementById('auth-forms').style.display = 'none';
                 document.getElementById('auth-profile').style.display = 'block';
                 document.getElementById('profile-username').innerText = currentUser;
-                document.getElementById('library-content').innerHTML = `
-                    <p style="color: #fff; font-size: 13px;">Owned projects for <strong>${currentUser}</strong>:</p>
-                    <ul style="list-style: none; padding: 0; margin-top: 10px; color: #8ee08e; font-size: 13px;">
-                        <li>[Installed] SO:Counter (v1.0)</li>
-                        <li>[Installed] GO:SPEED MOST WANTED (v1.0)</li>
-                    </ul>
-                `;
             } else {
                 document.getElementById('auth-forms').style.display = 'flex';
                 document.getElementById('auth-profile').style.display = 'none';
-                document.getElementById('library-content').innerHTML = `Log in to view your owned HooL Corporation projects and installed games.`;
             }
         }
 
@@ -351,14 +500,15 @@
 
             localStorage.setItem('hool_current_user', user);
             checkAuth();
+            switchTab('store');
         }
 
         function handleLogout() {
             localStorage.removeItem('hool_current_user');
             checkAuth();
+            switchTab('store');
         }
 
-        // Spustenie kontroly pri načítaní stránky
         window.onload = function() {
             checkAuth();
         }
