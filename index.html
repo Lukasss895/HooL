@@ -45,20 +45,29 @@
             font-weight: bold;
             margin-left: 15px;
             text-transform: uppercase;
+            cursor: pointer;
         }
-        nav a:hover {
+        nav a:hover, nav a.active {
             color: #fff;
             text-decoration: underline;
         }
         .content {
             padding: 30px;
+            min-height: 250px;
+        }
+        /* Hidden / Visible Window System */
+        .window-pane {
+            display: none;
+        }
+        .window-pane.active {
+            display: block;
         }
         .hero {
             background: #1f1f1f;
             border: 1px solid #3a3a3a;
             padding: 25px;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
         .hero h2 {
             color: #ffffff;
@@ -77,6 +86,7 @@
             border-radius: 2px;
             box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
             cursor: pointer;
+            border: none;
         }
         .btn:hover {
             background: linear-gradient(to bottom, #6a6a6a, #3d3d3d);
@@ -93,7 +103,6 @@
         .games-grid {
             display: flex;
             gap: 15px;
-            margin-bottom: 30px;
         }
         .game-card {
             background: #222;
@@ -112,14 +121,15 @@
             color: #999;
             margin: 0 0 12px 0;
         }
-        /* Auth Box Style (2010 Retro Form) */
+        /* Auth Window Layout */
         .auth-container {
             background: #222;
             border: 1px solid #3a3a3a;
-            padding: 20px;
-            margin-bottom: 30px;
+            padding: 25px;
             display: flex;
             justify-content: space-around;
+            width: 500px;
+            margin: 0 auto;
         }
         .auth-box {
             width: 45%;
@@ -133,7 +143,7 @@
             margin-top: 0;
         }
         .form-group {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             text-align: left;
         }
         .form-group label {
@@ -170,64 +180,74 @@
                 <span>Hooligans Corporation</span>
             </div>
             <nav>
-                <a href="#">Store</a>
-                <a href="#">Library</a>
-                <a href="#">Community</a>
-                <a href="#auth" style="color: #60abf8;">Account</a>
+                <a onclick="switchTab('store')" id="nav-store" class="active">Store</a>
+                <a onclick="switchTab('library')" id="nav-library">Library</a>
+                <a onclick="switchTab('auth')" id="nav-auth">Account</a>
             </nav>
         </header>
 
         <div class="content">
-            <div class="hero">
-                <h2>Back to the Golden Era of Gaming (2010)</h2>
-                <p>A lightweight retro client and store for your custom projects and classic games. No bloat, pure nostalgia.</p>
-                <br>
-                <a href="#" class="btn">Download HooL Client (v1.0)</a>
-            </div>
-
-            <div class="section-title">Featured Store Projects</div>
             
-            <div class="games-grid">
-                <div class="game-card">
-                    <h3>SO:Counter</h3>
-                    <p>Classic tactical action remastered under Hooligans Corporation.</p>
-                    <a href="#" class="btn" style="padding: 5px 12px; font-size: 11px;">View Project</a>
+            <!-- OKNO 1: STORE -->
+            <div id="pane-store" class="window-pane active">
+                <div class="hero">
+                    <h2>Back to the Golden Era of Gaming (2010)</h2>
+                    <p>A lightweight retro client and store for your custom projects. No bloat, pure nostalgia.</p>
+                    <br>
+                    <a href="#" class="btn">Download HooL Client (v1.0)</a>
                 </div>
-                <div class="game-card">
-                    <h3>GO:SPEED MOST WANTED</h3>
-                    <p>High-speed retro arcade racing experience.</p>
-                    <a href="#" class="btn" style="padding: 5px 12px; font-size: 11px;">View Project</a>
+
+                <div class="section-title">Featured Store Projects</div>
+                <div class="games-grid">
+                    <div class="game-card">
+                        <h3>SO:Counter</h3>
+                        <p>Classic tactical action remastered under Hooligans Corporation.</p>
+                        <a href="#" class="btn" style="padding: 5px 12px; font-size: 11px;">View Project</a>
+                    </div>
+                    <div class="game-card">
+                        <h3>GO:SPEED MOST WANTED</h3>
+                        <p>High-speed retro arcade racing experience.</p>
+                        <a href="#" class="btn" style="padding: 5px 12px; font-size: 11px;">View Project</a>
+                    </div>
                 </div>
             </div>
 
-            <div id="auth" class="section-title">HooL Network Authentication</div>
-            <div class="auth-container">
-                <!-- Login Box -->
-                <div class="auth-box">
-                    <h3>Existing User (Log In)</h3>
-                    <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" placeholder="Enter username">
-                    </div>
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" placeholder="Password">
-                    </div>
-                    <button class="btn" style="width: 100%; margin-top: 5px; padding: 7px;">Sign In</button>
-                </div>
+            <!-- OKNO 2: LIBRARY (Prázdne pre budúce hry) -->
+            <div id="pane-library" class="window-pane">
+                <div class="section-title">Your Game Library</div>
+                <p style="text-align: center; color: #777; padding: 30px;">Log in to view your owned HooL Corporation projects and installed games.</p>
+            </div>
 
-                <!-- Register Box -->
-                <div class="auth-box">
-                    <h3>New User (Register)</h3>
-                    <div class="form-group">
-                        <label>Choose Username</label>
-                        <input type="text" placeholder="Choose username">
+            <!-- OKNO 3: AUTH (Login / Register) -->
+            <div id="pane-auth" class="window-pane">
+                <div class="auth-container">
+                    <!-- Login Box -->
+                    <div class="auth-box">
+                        <h3>Sign In</h3>
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" placeholder="Username">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" placeholder="Password">
+                        </div>
+                        <button class="btn" style="width: 100%; margin-top: 5px; padding: 7px;">Log In</button>
                     </div>
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" placeholder="Create password">
+
+                    <!-- Register Box -->
+                    <div class="auth-box">
+                        <h3>Register</h3>
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" placeholder="New username">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" placeholder="New password">
+                        </div>
+                        <button class="btn" style="width: 100%; margin-top: 5px; padding: 7px; background: linear-gradient(to bottom, #3b6e22, #224412);">Create Account</button>
                     </div>
-                    <button class="btn" style="width: 100%; margin-top: 5px; padding: 7px; background: linear-gradient(to bottom, #3b6e22, #224412);">Create Account</button>
                 </div>
             </div>
 
@@ -237,6 +257,23 @@
             &copy; 2010-2026 Hooligans Corporation. All rights reserved.
         </footer>
     </div>
+
+    <script>
+        function switchTab(tabName) {
+            // Skryje všetky okná
+            document.querySelectorAll('.window-pane').forEach(pane => {
+                pane.classList.remove('active');
+            });
+            // Odstráni zvýraznenie z menu
+            document.querySelectorAll('nav a').forEach(nav => {
+                nav.classList.remove('active');
+            });
+            
+            // Zobraté vybrané okno a zvýrazní sa položka v menu
+            document.getElementById('pane-' + tabName).classList.add('active');
+            document.getElementById('nav-' + tabName).classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
