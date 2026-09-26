@@ -338,6 +338,10 @@
                         <input type="text" id="support-user" placeholder="Enter your username">
                     </div>
                     <div class="form-group">
+                        <label>Your Email</label>
+                        <input type="email" id="support-email" placeholder="name@example.com">
+                    </div>
+                    <div class="form-group">
                         <label>Issue Description / Forgot Password</label>
                         <textarea id="support-msg" rows="3" placeholder="Describe your problem..."></textarea>
                     </div>
@@ -487,22 +491,24 @@
 
         function submitSupportTicket() {
             let user = document.getElementById('support-user').value.trim();
+            let email = document.getElementById('support-email').value.trim();
             let text = document.getElementById('support-msg').value.trim();
             let statusBox = document.getElementById('support-status');
 
-            if (!user || !text) {
+            if (!user || !email || !text) {
                 statusBox.className = "msg";
-                statusBox.innerText = "Please fill in all fields.";
+                statusBox.innerText = "Please fill in all fields (including email).";
                 return;
             }
 
             let tickets = JSON.parse(localStorage.getItem('hool_support_tickets') || '[]');
-            tickets.push({ user: user, text: text, time: new Date().toLocaleTimeString() });
+            tickets.push({ user: user, email: email, text: text, time: new Date().toLocaleTimeString() });
             localStorage.setItem('hool_support_tickets', JSON.stringify(tickets));
 
             statusBox.className = "msg msg-success";
             statusBox.innerText = "Ticket submitted successfully! Admin will check it.";
             document.getElementById('support-user').value = '';
+            document.getElementById('support-email').value = '';
             document.getElementById('support-msg').value = '';
         }
 
@@ -517,11 +523,11 @@
 
             let html = "";
             tickets.forEach((t, index) => {
-                // Skúsime nájsť heslo daného používateľa v localStorage
                 let userPass = localStorage.getItem('hool_user_' + t.user) || 'Unknown user / Not registered';
                 html += `<div style="border-bottom: 1px solid #333; padding: 6px 0;">
-                    <strong>[#${index+1}] User: <span style="color:#60abf8;">${t.user}</span></strong> (Password: <span style="color:#99ff99;">${userPass}</span>)<br>
-                    <span>Message: ${t.text}</span>
+                    <strong>[#${index+1}] User: <span style="color:#60abf8;">${t.user}</span></strong> | Email: <span style="color:#ccc;">${t.email}</span><br>
+                    <span>Password in DB: <span style="color:#99ff99;">${userPass}</span></span><br>
+                    <span style="color:#aaa;">Message: ${t.text}</span>
                 </div>`;
             });
             container.innerHTML = html;
