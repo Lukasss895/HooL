@@ -76,6 +76,7 @@
             border: 1px solid #1a1a1a;
             border-radius: 2px;
             box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+            cursor: pointer;
         }
         .btn:hover {
             background: linear-gradient(to bottom, #6a6a6a, #3d3d3d);
@@ -111,6 +112,45 @@
             color: #999;
             margin: 0 0 12px 0;
         }
+        /* Auth Box Style (2010 Retro Form) */
+        .auth-container {
+            background: #222;
+            border: 1px solid #3a3a3a;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .auth-box {
+            width: 45%;
+        }
+        .auth-box h3 {
+            color: #fff;
+            font-size: 13px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+        .form-group {
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 3px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 6px;
+            background: #181818;
+            border: 1px solid #333;
+            color: #fff;
+            font-size: 12px;
+            box-sizing: border-box;
+        }
         footer {
             background-color: #161616;
             color: #666;
@@ -133,6 +173,7 @@
                 <a href="#">Store</a>
                 <a href="#">Library</a>
                 <a href="#">Community</a>
+                <a href="#auth" style="color: #60abf8;">Account</a>
             </nav>
         </header>
 
@@ -156,6 +197,37 @@
                     <h3>GO:SPEED MOST WANTED</h3>
                     <p>High-speed retro arcade racing experience.</p>
                     <a href="#" class="btn" style="padding: 5px 12px; font-size: 11px;">View Project</a>
+                </div>
+            </div>
+
+            <div id="auth" class="section-title">HooL Network Authentication</div>
+            <div class="auth-container">
+                <!-- Login Box -->
+                <div class="auth-box">
+                    <h3>Existing User (Log In)</h3>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" placeholder="Enter username">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" placeholder="Password">
+                    </div>
+                    <button class="btn" style="width: 100%; margin-top: 5px; padding: 7px;">Sign In</button>
+                </div>
+
+                <!-- Register Box -->
+                <div class="auth-box">
+                    <h3>New User (Register)</h3>
+                    <div class="form-group">
+                        <label>Choose Username</label>
+                        <input type="text" placeholder="Choose username">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" placeholder="Create password">
+                    </div>
+                    <button class="btn" style="width: 100%; margin-top: 5px; padding: 7px; background: linear-gradient(to bottom, #3b6e22, #224412);">Create Account</button>
                 </div>
             </div>
 
