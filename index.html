@@ -243,9 +243,9 @@
                 <div class="section-title">Featured Store Projects</div>
                 <div class="games-grid">
                     <div class="game-card">
-                        <h3>SO:Counter</h3>
+                        <h3>GO:COUNTER</h3>
                         <p>Classic tactical action remastered under Hooligans Corporation.</p>
-                        <button class="btn" onclick="openGame('socounter')">View Project</button>
+                        <button class="btn" onclick="openGame('gocounter')">View Project</button>
                     </div>
                     <div class="game-card">
                         <h3>GO:SPEED MOST WANTED</h3>
@@ -373,8 +373,8 @@
         let currentGameID = '';
 
         const gamesData = {
-            'socounter': {
-                title: 'SO:Counter',
+            'gocounter': {
+                title: 'GO:COUNTER',
                 desc: 'Classic tactical action remastered under Hooligans Corporation.'
             },
             'gospeed': {
@@ -478,7 +478,6 @@
             libContainer.innerHTML = html;
         }
 
-        // Support ticket submission with professional corporate template in English
         async function submitSupportTicket() {
             let user = document.getElementById('support-user').value.trim();
             let email = document.getElementById('support-email').value.trim();
