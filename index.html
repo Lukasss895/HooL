@@ -51,45 +51,29 @@
             color: #fff;
             text-decoration: underline;
         }
+        /* Špeciálne tlačidlo pre Install v hornej lište */
+        nav a.install-btn {
+            background: linear-gradient(to bottom, #5a5a5a, #333333);
+            color: white;
+            padding: 5px 10px;
+            border: 1px solid #1a1a1a;
+            border-radius: 2px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        nav a.install-btn:hover {
+            background: linear-gradient(to bottom, #6a6a6a, #3d3d3d);
+            text-decoration: none;
+        }
         .content {
             padding: 30px;
             min-height: 250px;
         }
-        /* Hidden / Visible Window System */
+        /* Systém prepínania okien */
         .window-pane {
             display: none;
         }
         .window-pane.active {
             display: block;
-        }
-        .hero {
-            background: #1f1f1f;
-            border: 1px solid #3a3a3a;
-            padding: 25px;
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        .hero h2 {
-            color: #ffffff;
-            margin-top: 0;
-            font-size: 18px;
-        }
-        .btn {
-            display: inline-block;
-            background: linear-gradient(to bottom, #5a5a5a, #333333);
-            color: white;
-            padding: 10px 22px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 13px;
-            border: 1px solid #1a1a1a;
-            border-radius: 2px;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
-            cursor: pointer;
-            border: none;
-        }
-        .btn:hover {
-            background: linear-gradient(to bottom, #6a6a6a, #3d3d3d);
         }
         .section-title {
             border-bottom: 1px solid #444;
@@ -121,7 +105,24 @@
             color: #999;
             margin: 0 0 12px 0;
         }
-        /* Auth Window Layout */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to bottom, #5a5a5a, #333333);
+            color: white;
+            padding: 8px 18px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 12px;
+            border: 1px solid #1a1a1a;
+            border-radius: 2px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+            cursor: pointer;
+            border: none;
+        }
+        .btn:hover {
+            background: linear-gradient(to bottom, #6a6a6a, #3d3d3d);
+        }
+        /* Auth okno */
         .auth-container {
             background: #222;
             border: 1px solid #3a3a3a;
@@ -183,6 +184,7 @@
                 <a onclick="switchTab('store')" id="nav-store" class="active">Store</a>
                 <a onclick="switchTab('library')" id="nav-library">Library</a>
                 <a onclick="switchTab('auth')" id="nav-auth">Account</a>
+                <a onclick="switchTab('install')" id="nav-install" class="install-btn">Install HooL</a>
             </nav>
         </header>
 
@@ -190,13 +192,6 @@
             
             <!-- OKNO 1: STORE -->
             <div id="pane-store" class="window-pane active">
-                <div class="hero">
-                    <h2>Back to the Golden Era of Gaming (2010)</h2>
-                    <p>A lightweight retro client and store for your custom projects. No bloat, pure nostalgia.</p>
-                    <br>
-                    <a href="#" class="btn">Download HooL Client (v1.0)</a>
-                </div>
-
                 <div class="section-title">Featured Store Projects</div>
                 <div class="games-grid">
                     <div class="game-card">
@@ -212,16 +207,15 @@
                 </div>
             </div>
 
-            <!-- OKNO 2: LIBRARY (Prázdne pre budúce hry) -->
+            <!-- OKNO 2: LIBRARY -->
             <div id="pane-library" class="window-pane">
                 <div class="section-title">Your Game Library</div>
                 <p style="text-align: center; color: #777; padding: 30px;">Log in to view your owned HooL Corporation projects and installed games.</p>
             </div>
 
-            <!-- OKNO 3: AUTH (Login / Register) -->
+            <!-- OKNO 3: ACCOUNT (Login / Register) -->
             <div id="pane-auth" class="window-pane">
                 <div class="auth-container">
-                    <!-- Login Box -->
                     <div class="auth-box">
                         <h3>Sign In</h3>
                         <div class="form-group">
@@ -235,7 +229,6 @@
                         <button class="btn" style="width: 100%; margin-top: 5px; padding: 7px;">Log In</button>
                     </div>
 
-                    <!-- Register Box -->
                     <div class="auth-box">
                         <h3>Register</h3>
                         <div class="form-group">
@@ -251,6 +244,15 @@
                 </div>
             </div>
 
+            <!-- OKNO 4: INSTALL / DOWNLOAD -->
+            <div id="pane-install" class="window-pane">
+                <div class="section-title">Install HooL Client</div>
+                <div style="text-align: center; padding: 20px;">
+                    <p style="font-size: 13px; color: #ccc; margin-bottom: 20px;">Get the retro 2010 desktop client for Windows and manage your Hooligans Corporation projects directly from your desktop.</p>
+                    <a href="#" class="btn" style="padding: 12px 30px; font-size: 14px; background: linear-gradient(to bottom, #3b6e22, #224412);">Download HooL v1.0 (Setup.exe)</a>
+                </div>
+            </div>
+
         </div>
 
         <footer>
@@ -260,18 +262,18 @@
 
     <script>
         function switchTab(tabName) {
-            // Skryje všetky okná
             document.querySelectorAll('.window-pane').forEach(pane => {
                 pane.classList.remove('active');
             });
-            // Odstráni zvýraznenie z menu
             document.querySelectorAll('nav a').forEach(nav => {
-                nav.classList.remove('active');
+                if(!nav.classList.contains('install-btn')) nav.classList.remove('active');
             });
             
-            // Zobraté vybrané okno a zvýrazní sa položka v menu
             document.getElementById('pane-' + tabName).classList.add('active');
-            document.getElementById('nav-' + tabName).classList.add('active');
+            let clickedNav = document.getElementById('nav-' + tabName);
+            if(!clickedNav.classList.contains('install-btn')) {
+                clickedNav.classList.add('active');
+            }
         }
     </script>
 
