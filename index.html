@@ -250,12 +250,12 @@
                 <div class="games-grid">
                     <div class="game-card">
                         <h3>GO:COUNTER</h3>
-                        <p>CS:GO prerobené aby pripomínalo roky 2015 2016.</p>
+                        <p>CS:GO remade to evoke the years 2015-2016.</p>
                         <button class="btn" onclick="openGame('gocounter')">View Project</button>
                     </div>
                     <div class="game-card">
                         <h3>GO:SPEED</h3>
-                        <p>Need for speed projekt ktorý je funkčný a viete hrať online.</p>
+                        <p>A fully functional Need for Speed project that you can play online.</p>
                         <button class="btn" onclick="openGame('gospeed')">View Project</button>
                     </div>
                 </div>
@@ -329,7 +329,7 @@
 
                 <div id="auth-profile" style="display: none; text-align: center; padding: 30px;">
                     <h3 style="color: #fff; font-size: 18px;">Welcome back, <span id="profile-username" style="color: #60abf8;"></span>!</h3>
-                    <p style="font-size: 13px; color: #aaa;">You are successfully logged into Hooligans Corporation network.</p>
+                    <p style="font-size: 13px; color: #aaa;">You are successfully logged into the Hooligans Corporation network.</p>
                     <button class="btn" style="background: linear-gradient(to bottom, #993333, #661111); margin-top: 15px;" onclick="handleLogout()">Log Out</button>
                 </div>
             </div>
@@ -381,11 +381,11 @@
         const gamesData = {
             'gocounter': {
                 title: 'GO:COUNTER',
-                desc: 'CS:GO prerobené aby pripomínalo roky 2015 2016.'
+                desc: 'CS:GO remade to evoke the years 2015-2016.'
             },
             'gospeed': {
                 title: 'GO:SPEED',
-                desc: 'Need for speed projekt ktorý je funkčný a viete hrať online.'
+                desc: 'A fully functional Need for Speed project that you can play online.'
             }
         };
 
@@ -532,7 +532,7 @@
                 }
             } catch (error) {
                 statusBox.className = "msg";
-                statusBox.innerText = "Connection error. Please check your internet.";
+                statusBox.innerText = "Connection error. Please check your internet connection.";
             }
         }
 
