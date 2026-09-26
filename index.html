@@ -51,7 +51,6 @@
             color: #fff;
             text-decoration: underline;
         }
-        /* Špeciálne tlačidlo pre Install v hornej lište */
         nav a.install-btn {
             background: linear-gradient(to bottom, #5a5a5a, #333333);
             color: white;
@@ -68,7 +67,6 @@
             padding: 30px;
             min-height: 250px;
         }
-        /* Systém prepínania okien */
         .window-pane {
             display: none;
         }
@@ -122,7 +120,6 @@
         .btn:hover {
             background: linear-gradient(to bottom, #6a6a6a, #3d3d3d);
         }
-        /* Auth okno */
         .auth-container {
             background: #222;
             border: 1px solid #3a3a3a;
@@ -184,7 +181,7 @@
                 <a onclick="switchTab('store')" id="nav-store" class="active">Store</a>
                 <a onclick="switchTab('library')" id="nav-library">Library</a>
                 <a onclick="switchTab('auth')" id="nav-auth">Account</a>
-                <a onclick="switchTab('install')" id="nav-install" class="install-btn">Install HooL</a>
+                <a onclick="switchTab('install')" id="nav-install" class="install-btn">setup.exe</a>
             </nav>
         </header>
 
@@ -213,7 +210,7 @@
                 <p style="text-align: center; color: #777; padding: 30px;">Log in to view your owned HooL Corporation projects and installed games.</p>
             </div>
 
-            <!-- OKNO 3: ACCOUNT (Login / Register) -->
+            <!-- OKNO 3: ACCOUNT -->
             <div id="pane-auth" class="window-pane">
                 <div class="auth-container">
                     <div class="auth-box">
@@ -244,12 +241,12 @@
                 </div>
             </div>
 
-            <!-- OKNO 4: INSTALL / DOWNLOAD -->
+            <!-- OKNO 4: INSTALL (setup.exe) -->
             <div id="pane-install" class="window-pane">
-                <div class="section-title">Install HooL Client</div>
+                <div class="section-title">Download Client Setup</div>
                 <div style="text-align: center; padding: 20px;">
-                    <p style="font-size: 13px; color: #ccc; margin-bottom: 20px;">Get the retro 2010 desktop client for Windows and manage your Hooligans Corporation projects directly from your desktop.</p>
-                    <a href="#" class="btn" style="padding: 12px 30px; font-size: 14px; background: linear-gradient(to bottom, #3b6e22, #224412);">Download HooL v1.0 (Setup.exe)</a>
+                    <p style="font-size: 13px; color: #ccc; margin-bottom: 20px;">Download the official Hooligans Corporation installer to get HooL on your desktop.</p>
+                    <a href="#" class="btn" style="padding: 12px 30px; font-size: 14px; background: linear-gradient(to bottom, #3b6e22, #224412);">Download setup.exe (v1.0)</a>
                 </div>
             </div>
 
