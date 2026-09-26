@@ -1,47 +1,75 @@
 <!DOCTYPE html>
-<html lang="sk">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>HooL</title>
+    <title>HooL - Hooligans Corporation</title>
     <style>
         body {
             background-color: #1b1b1b;
             color: #b5b5b5;
             font-family: Arial, Tahoma, sans-serif;
-            text-align: center;
             margin: 0;
-            padding-top: 80px;
+            padding: 0;
         }
-        .container {
-            width: 450px;
-            margin: 0 auto;
+        .wrapper {
+            width: 750px;
+            margin: 40px auto;
             background-color: #2b2b2b;
             border: 1px solid #101010;
-            padding: 40px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.9);
+            box-shadow: 0 0 25px rgba(0,0,0,0.9);
         }
-        h1 {
+        header {
+            background: linear-gradient(to bottom, #4a4a4a, #2b2b2b);
+            padding: 20px;
+            border-bottom: 2px solid #101010;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo h1 {
+            margin: 0;
             color: #ffffff;
-            font-size: 26px;
-            margin-bottom: 5px;
+            font-size: 24px;
             letter-spacing: 2px;
+            text-shadow: 1px 1px #000;
         }
-        .subtitle {
-            font-size: 11px;
-            color: #888;
+        .logo span {
+            font-size: 10px;
+            color: #999;
             text-transform: uppercase;
+        }
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 15px;
+            text-transform: uppercase;
+        }
+        nav a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+        .content {
+            padding: 30px;
+        }
+        .hero {
+            background: #1f1f1f;
+            border: 1px solid #3a3a3a;
+            padding: 25px;
+            text-align: center;
             margin-bottom: 30px;
         }
-        p {
-            font-size: 13px;
-            line-height: 1.5;
-            margin-bottom: 30px;
+        .hero h2 {
+            color: #ffffff;
+            margin-top: 0;
+            font-size: 18px;
         }
         .btn {
             display: inline-block;
             background: linear-gradient(to bottom, #5a5a5a, #333333);
             color: white;
-            padding: 10px 25px;
+            padding: 10px 22px;
             text-decoration: none;
             font-weight: bold;
             font-size: 13px;
@@ -52,25 +80,89 @@
         .btn:hover {
             background: linear-gradient(to bottom, #6a6a6a, #3d3d3d);
         }
+        .section-title {
+            border-bottom: 1px solid #444;
+            padding-bottom: 5px;
+            color: #fff;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .games-grid {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .game-card {
+            background: #222;
+            border: 1px solid #383838;
+            padding: 15px;
+            flex: 1;
+            text-align: center;
+        }
+        .game-card h3 {
+            color: #fff;
+            font-size: 14px;
+            margin: 0 0 8px 0;
+        }
+        .game-card p {
+            font-size: 12px;
+            color: #999;
+            margin: 0 0 12px 0;
+        }
         footer {
-            margin-top: 40px;
+            background-color: #161616;
+            color: #666;
+            text-align: center;
+            padding: 15px;
             font-size: 11px;
-            color: #555;
+            border-top: 1px solid #222;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>HOOL</h1>
-        <div class="subtitle">Hooligans Corporation</div>
-        
-        <p>Retro herný klient inšpirovaný zlatou érou roku 2010. Žiadne zbytočnosti, len čistá nostalgická atmosféra pre tvoje hry.</p>
-        
-        <a href="#" class="btn">Stiahnuť HooL (v1.0)</a>
-        
+    <div class="wrapper">
+        <header>
+            <div class="logo">
+                <h1>HOOL</h1>
+                <span>Hooligans Corporation</span>
+            </div>
+            <nav>
+                <a href="#">Store</a>
+                <a href="#">Library</a>
+                <a href="#">Community</a>
+            </nav>
+        </header>
+
+        <div class="content">
+            <div class="hero">
+                <h2>Back to the Golden Era of Gaming (2010)</h2>
+                <p>A lightweight retro client and store for your custom projects and classic games. No bloat, pure nostalgia.</p>
+                <br>
+                <a href="#" class="btn">Download HooL Client (v1.0)</a>
+            </div>
+
+            <div class="section-title">Featured Store Projects</div>
+            
+            <div class="games-grid">
+                <div class="game-card">
+                    <h3>SO:Counter</h3>
+                    <p>Classic tactical action remastered under Hooligans Corporation.</p>
+                    <a href="#" class="btn" style="padding: 5px 12px; font-size: 11px;">View Project</a>
+                </div>
+                <div class="game-card">
+                    <h3>GO:SPEED MOST WANTED</h3>
+                    <p>High-speed retro arcade racing experience.</p>
+                    <a href="#" class="btn" style="padding: 5px 12px; font-size: 11px;">View Project</a>
+                </div>
+            </div>
+
+        </div>
+
         <footer>
-            &copy; 2010-2026 Hooligans Corporation. Všetky práva vyhradené.
+            &copy; 2010-2026 Hooligans Corporation. All rights reserved.
         </footer>
     </div>
 
